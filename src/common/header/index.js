@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { CSSTransition } from "react-transition-group";
 
 import {
@@ -12,15 +13,19 @@ import {
   Button
 } from "./style";
 
-class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      focused: false
-    };
-  }
 
+/**
+ * 若只有render部分，没有constructor、state，可以使用无状态组件，性能更高
+ * const Header=(props)=>{
+ *  return (...jsx)
+ * }
+ */
+class Header extends Component {
+  // constructor(props) {
+  //   super(props);
+  // }
   render() {
+    const { focused, handleInputFocus } = this.props;
     return (
       <HeaderWrapper>
         <Logo />
@@ -40,25 +45,19 @@ class Header extends Component {
             <i className="iconfont iconAa" style={{ fontWeight: "bold" }}></i>
           </NavItem>
           <SearchWrapper>
-            <CSSTransition
-              in={this.state.focused}
-              timeout={300}
-              classNames="slide"
-            >
+            <CSSTransition in={focused} timeout={300} classNames="slide">
               <NavSearch
-                className={this.state.focused ? "focused" : ""}
+                className={focused ? "focused" : ""}
                 onFocus={() => {
-                  this.handleInputFocus();
+                  handleInputFocus(focused);
                 }}
                 onBlur={() => {
-                  this.handleInputFocus();
+                  handleInputFocus(focused);
                 }}
               ></NavSearch>
             </CSSTransition>
             <i
-              className={`iconfont iconfangdajing ${
-                this.state.focused ? "focused" : ""
-              }`}
+              className={`iconfont iconfangdajing ${focused ? "focused" : ""}`}
             ></i>
           </SearchWrapper>
         </Nav>
@@ -75,13 +74,29 @@ class Header extends Component {
       </HeaderWrapper>
     );
   }
-
-  //处理输入框聚焦，展示动画
-  handleInputFocus() {
-    this.setState({
-      focused: !this.state.focused
-    });
-  }
 }
 
-export default Header;
+//store中的state数据映射给props
+const mapStateToProps = state => {
+  return {
+    focused: state.header.focused
+  };
+};
+//方法映射给props，进行派发改变state
+const mapDispatchToProps = dispatch => {
+  return {
+    //处理header输入框聚焦
+    handleInputFocus(status) {
+      const action = {
+        type: "changeInputFocus",
+        status
+      };
+      dispatch(action);
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Header); //函数柯里化
