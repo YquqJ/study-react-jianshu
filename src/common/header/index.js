@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { CSSTransition } from "react-transition-group";
+import { actionCreators } from "./store";
 
 import {
   HeaderWrapper,
@@ -79,7 +80,7 @@ class Header extends Component {
 //store中的state数据映射给props
 const mapStateToProps = state => {
   return {
-    focused: state.header.focused
+    focused: state.header.get('focused')
   };
 };
 //方法映射给props，进行派发改变state
@@ -87,10 +88,7 @@ const mapDispatchToProps = dispatch => {
   return {
     //处理header输入框聚焦
     handleInputFocus(status) {
-      const action = {
-        type: "changeInputFocus",
-        status
-      };
+      const action = actionCreators.searchFocus(status)
       dispatch(action);
     }
   };
