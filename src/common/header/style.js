@@ -53,7 +53,7 @@ export const SearchWrapper = styled.div`
   float: left;
   height: 38px;
   margin-top: 9px;
-  .iconfont {
+  .iconfangdajing {
     position: absolute;
     top: 50%;
     right: 5px;
@@ -99,6 +99,55 @@ export const NavSearch = styled.input.attrs({
   }
   &.slide-exit-active {
     width: 160px;
+  }
+`;
+export const SearchInfo = styled.div`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 260px;
+  margin-top: 10px;
+  margin-left: 20px;
+  padding: 20px 20px 10px 20px;
+  box-shadow: 0 0 8px rgba(0,0,0,.2);
+  box-sizing: border-box;
+`;
+export const SearchInfoTitle = styled.div`
+  float: left;
+  font-size: 14px;
+  color: #969696;
+`;
+export const SearchInfoSwitch = styled.span`
+  float: right;
+  font-size: 13px;
+  color: #969696;
+  cursor: pointer;
+  &:hover{
+    color: #333;
+  }
+  .iconfont{
+    display: inline-block;
+    margin-right: 3px;
+    font-size: 12px;
+    transition: all .3s;
+    transform: center center;
+  }
+`;
+export const SearchInfoList = styled.div`
+  margin-top: 30px;
+`;
+export const SearchInfoItem = styled.a`
+  display: inline-block;
+  margin: 0 10px 8px 0;
+  padding: 2px 6px;
+  font-size: 12px;
+  color: #787878;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  cursor: pointer;
+  &:hover{
+    color: #333;
+    border-color: #b4b4b4;
   }
 `;
 export const Addition = styled.div`
