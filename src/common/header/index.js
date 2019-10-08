@@ -47,6 +47,7 @@ class Header extends Component {
           onMouseEnter={()=>{handleMouseStatus(true)}}
           onMouseLeave={()=>{handleMouseStatus(false)}}
         >
+          <div className="arrow" />
           <SearchInfoTitle>热门搜索</SearchInfoTitle>
           <SearchInfoSwitch onClick={()=>{handleChangePage(page,totalPage,this.spinIcon)}}>
             <i ref={(spin)=>{this.spinIcon=spin}} className="iconfont iconspin"></i>

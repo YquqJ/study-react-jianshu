@@ -116,6 +116,15 @@ export const SearchInfo = styled.div`
   box-shadow: 0 0 8px rgba(0,0,0,.2);
   box-sizing: border-box;
   background: #fff;
+  .arrow{
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-bottom: 10px solid #fff;
+  }
 `;
 export const SearchInfoTitle = styled.div`
   float: left;
