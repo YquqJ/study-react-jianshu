@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const HomeWrapper = styled.div`
   padding-top: 30px;
   width: 960px;
-  margin: 0 auto;
+  margin: 56px auto 0;
   overflow: hidden;
 `;
 export const HomeLeft = styled.div`
@@ -19,7 +19,7 @@ export const HomeLeft = styled.div`
 `;
 export const HomeRight = styled.div`
   float: right;
-  width: 240px;
+  width: 280px;
   height: 300px;
 `;
 export const TopicWrapper = styled.div`
@@ -99,5 +99,89 @@ export const BottomBox = styled.div`
   &.writer:hover{
     color: #787878;
     cursor: pointer;
+  }
+`;
+export const RecommendWrapper = styled.div`
+
+`;
+export const RecommendItem = styled.div`
+  margin-bottom: 6px;
+  width: 280px;
+  height: 50px;
+  background-image: url(${(props)=>props.imgUrl});
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+`;
+export const DownloadWrapper = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 15px 0 30px;
+  padding-left: 22px;
+  width: 100%;
+  height: 82px;
+  border: 1px solid #f0f0f0;
+  border-radius: 6px;
+  background: #fff;
+  box-sizing: border-box;
+  .small-qrcode{
+    margin-right: 10px;
+    width: 60px;
+    height: 60px;
+  }
+`;
+export const DownloadInfo = styled.div`
+  cursor: pointer;
+  h3{
+    font-size: 15px;
+    color: #333;
+  }
+  p{
+    margin-top: 10px;
+    font-size: 13px;
+    color: #999;
+  }
+`;
+export const DownloadPopup = styled.div`
+  position: absolute;
+  bottom: 90px;
+  left: 50%;
+  width: 184px;
+  height: 184px;
+  transform: translateX(-50%);
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: 6px;
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  background: #fff;
+  img{
+    display: block;
+    margin: 12px auto 0;
+    width: 160px;
+    height: 160px;
+  }
+  .arrow{
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-top-color: #fff;
+  }
+  &.fade-enter{
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+  }
+  &.fade-enter-active{
+    opacity: 1;
+  }
+  &.fade-exit{
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+  }
+  &.fade-exit-active{
+    opacity: 0;
   }
 `;

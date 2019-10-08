@@ -4,6 +4,7 @@ import Topic from "./components/Topic"
 import List from "./components/List"
 import Recommend from "./components/Recommend"
 import Writer from "./components/Writer"
+import Download from "./components/Download"
 
 
 class Home extends Component{
@@ -17,6 +18,7 @@ class Home extends Component{
         </HomeLeft>
         <HomeRight>
           <Recommend />
+          <Download />
           <Writer />
         </HomeRight>
       </HomeWrapper>

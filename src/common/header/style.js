@@ -2,9 +2,13 @@ import styled from "styled-components";
 import logoPic from "../../static/logo.png";
 
 export const HeaderWrapper = styled.div`
-  position: relative;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
   height: 56px;
   border: 1px solid #f0f0f0;
+  background: #fff;
 `;
 export const Logo = styled.a.attrs({
   href: "/"
