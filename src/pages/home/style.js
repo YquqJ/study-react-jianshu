@@ -185,3 +185,14 @@ export const DownloadPopup = styled.div`
     opacity: 0;
   }
 `;
+export const LoadMoreBtn = styled.div`
+  margin: 20px 0;
+  padding: 10px 0;
+  width: 100%;
+  font-size: 15px;
+  color: #fff;
+  text-align: center;
+  background: #a5a5a5;
+  border-radius: 20px;
+  cursor: pointer;
+`;

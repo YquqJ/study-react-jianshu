@@ -9,6 +9,7 @@ export const HeaderWrapper = styled.div`
   height: 56px;
   border: 1px solid #f0f0f0;
   background: #fff;
+  z-index: 999;
 `;
 export const Logo = styled.a.attrs({
   href: "/"

@@ -1,4 +1,6 @@
 import React,{ Component } from "react"
+import { connect } from "react-redux"
+import { actionCreators } from "./store"
 import { HomeWrapper,HomeLeft,HomeRight } from "./style"
 import Topic from "./components/Topic"
 import List from "./components/List"
@@ -24,6 +26,17 @@ class Home extends Component{
       </HomeWrapper>
     )
   }
+
+  // render渲染完成之后调用
+  componentDidMount(){
+    this.props.getHomeData()
+  }
 }
 
-export default Home
+const mapDispatch = (dispatch) => ({
+  getHomeData(){
+    dispatch(actionCreators.getHomeData())
+  }
+})
+
+export default connect(null,mapDispatch)(Home)

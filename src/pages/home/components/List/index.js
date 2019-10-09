@@ -1,16 +1,17 @@
 import React,{ Component } from "react"
 import { connect } from "react-redux"
-import { ListItem,ListContent,ListContentBottom,BottomBox } from "../../style"
+import { actionCreators } from "../../store"
+import { ListItem,ListContent,ListContentBottom,BottomBox,LoadMoreBtn } from "../../style"
 
 class List extends Component{
   render(){
-    const { list } = this.props
+    const { list,currentPage,loadMoreList } = this.props
     return (
       <div>
         {
-          list.map((item)=>{
+          list.map((item,index)=>{
             return (
-              <ListItem key={item.get("id")}>
+              <ListItem key={index}>
                 <ListContent>
                   <h3 className="title">{item.get("title")}</h3>
                   <p className="desc text-line2">{item.get("desc")}</p>
@@ -37,13 +38,21 @@ class List extends Component{
             )
           })
         }
+        <LoadMoreBtn onClick={()=>{loadMoreList(currentPage)}}>阅读更多</LoadMoreBtn>
       </div>
     )
   }
 }
 
 const mapState = (state) => ({
-  list: state.getIn(["home","articleList"])
+  list: state.getIn(["home","articleList"]),
+  currentPage: state.getIn(["home","currentPage"])
 })
 
-export default connect(mapState)(List)
+const mapDispatch = (dispatch) => ({
+  loadMoreList(page){
+    dispatch(actionCreators.loadMoreList(page+1))
+  }
+})
+
+export default connect(mapState,mapDispatch)(List)
