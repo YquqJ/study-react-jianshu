@@ -145,7 +145,7 @@ export const SearchInfoSwitch = styled.span`
     margin-right: 3px;
     font-size: 12px;
     transition: all .3s;
-    transform: center center;
+    transform-origin: center center;
   }
 `;
 export const SearchInfoList = styled.div`

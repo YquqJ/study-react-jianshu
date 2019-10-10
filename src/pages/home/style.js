@@ -1,12 +1,12 @@
 import styled from "styled-components"
 
-export const HomeWrapper = styled.div`
+export const HomeWrapper = styled.div `
   padding-top: 30px;
   width: 960px;
   margin: 56px auto 0;
   overflow: hidden;
 `;
-export const HomeLeft = styled.div`
+export const HomeLeft = styled.div `
   float: left;
   width: 625px;
   margin-left: 15px;
@@ -17,18 +17,18 @@ export const HomeLeft = styled.div`
     border-radius: 6px;
   }
 `;
-export const HomeRight = styled.div`
+export const HomeRight = styled.div `
   float: right;
   width: 280px;
   height: 300px;
 `;
-export const TopicWrapper = styled.div`
+export const TopicWrapper = styled.div `
   overflow: hidden;
   margin-left: -18px;
   margin-bottom: 10px;
   border-bottom: 1px solid #f0f0f0; 
 `;
-export const TopicItem = styled.div`
+export const TopicItem = styled.div `
   float: left;
   margin-left: 18px;
   margin-bottom: 18px;
@@ -49,7 +49,7 @@ export const TopicItem = styled.div`
     margin-right: 8px;
   }
 `;
-export const ListItem = styled.div`
+export const ListItem = styled.div `
   overflow: hidden;
   padding: 20px 0;
   border-bottom: 1px solid #f0f0f0;
@@ -61,7 +61,7 @@ export const ListItem = styled.div`
     border-radius: 4px;
   }
 `;
-export const ListContent = styled.div`
+export const ListContent = styled.div `
   float: left;
   width: 460px;
   .title{
@@ -82,11 +82,11 @@ export const ListContent = styled.div`
     color: #999;
   }
 `;
-export const ListContentBottom = styled.div`
+export const ListContentBottom = styled.div `
   overflow: hidden;
   margin-top: 5px;
 `;
-export const BottomBox = styled.div`
+export const BottomBox = styled.div `
   float: left;
   margin-right: 12px;
   font-size: 12px;
@@ -101,10 +101,10 @@ export const BottomBox = styled.div`
     cursor: pointer;
   }
 `;
-export const RecommendWrapper = styled.div`
+export const RecommendWrapper = styled.div `
 
 `;
-export const RecommendItem = styled.div`
+export const RecommendItem = styled.div `
   margin-bottom: 6px;
   width: 280px;
   height: 50px;
@@ -113,7 +113,7 @@ export const RecommendItem = styled.div`
   background-repeat: no-repeat;
   cursor: pointer;
 `;
-export const DownloadWrapper = styled.div`
+export const DownloadWrapper = styled.div `
   position: relative;
   display: flex;
   align-items: center;
@@ -131,7 +131,7 @@ export const DownloadWrapper = styled.div`
     height: 60px;
   }
 `;
-export const DownloadInfo = styled.div`
+export const DownloadInfo = styled.div `
   cursor: pointer;
   h3{
     font-size: 15px;
@@ -143,7 +143,7 @@ export const DownloadInfo = styled.div`
     color: #999;
   }
 `;
-export const DownloadPopup = styled.div`
+export const DownloadPopup = styled.div `
   position: absolute;
   bottom: 90px;
   left: 50%;
@@ -185,7 +185,7 @@ export const DownloadPopup = styled.div`
     opacity: 0;
   }
 `;
-export const LoadMoreBtn = styled.div`
+export const LoadMoreBtn = styled.div `
   margin: 20px 0;
   padding: 10px 0;
   width: 100%;
@@ -195,4 +195,78 @@ export const LoadMoreBtn = styled.div`
   background: #a5a5a5;
   border-radius: 20px;
   cursor: pointer;
+`;
+export const BackTop = styled.div `
+  position: fixed;
+  right: 60px;
+  bottom: 60px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 14px;
+  border: 1px solid #dcdcdc;
+  cursor: pointer;
+`;
+export const WriterWrapper = styled.div `
+  .title{
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #969696;
+  }
+  .list-item{
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    .avatar{
+      margin-right: 10px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid #ddd;
+      overflow: hidden;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .content{
+      flex: 1;
+      .name{
+        margin-bottom: 8px;
+        font-size: 14px;
+        color: #333;
+      }
+      .desc{
+        font-size: 12px;
+        color: #969696;
+      }
+    }
+    .follow-btn{
+      position: relative;
+      font-size: 13px;
+      color: #42c02e;
+      &:before{
+        position: absolute;
+        left: -18px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 12px;
+        height: 2px;
+        background: #42c02e;
+        content: '';
+      }
+      &:after{
+        position: absolute;
+        left: -18px;
+        top: 50%;
+        transform: translateY(-50%) rotate(90deg);
+        transform-origin: center center;
+        width: 12px;
+        height: 2px;
+        background: #42c02e;
+        content: '';
+      }
+    }
+  }
 `;

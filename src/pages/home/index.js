@@ -7,9 +7,16 @@ import List from "./components/List"
 import Recommend from "./components/Recommend"
 import Writer from "./components/Writer"
 import Download from "./components/Download"
+import { BackTop } from "./style"
 
 
 class Home extends Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      show: false
+    }
+  }
   render(){
     return (
       <HomeWrapper>
@@ -23,6 +30,9 @@ class Home extends Component{
           <Download />
           <Writer />
         </HomeRight>
+        {
+          this.state.show && <BackTop onClick={()=>{this.backTop()}}>顶部</BackTop>
+        }
       </HomeWrapper>
     )
   }
@@ -30,6 +40,36 @@ class Home extends Component{
   // render渲染完成之后调用
   componentDidMount(){
     this.props.getHomeData()
+    this.bindEvent()
+  }
+
+  componentWillUnmount(){
+    window.removeEventListener("scroll",()=>{})
+    this.setState = () => {
+      return
+    }
+  }
+
+  bindEvent(){
+    window.addEventListener("scroll",(e) => {
+      this.showBackTopBtn()
+    })
+  }
+  showBackTopBtn(){
+    const top = document.documentElement.scrollTop
+    this.setState({
+      show: top > 500
+    })
+  }
+  backTop(){
+    const distance = document.documentElement.scrollTop
+    let gone = distance
+    const speed = distance / 30
+    const timer = setInterval(()=>{
+      gone -= speed
+      window.scrollTo(0,gone)
+      gone <=0 && clearInterval(timer)
+    },10)
   }
 }
 
