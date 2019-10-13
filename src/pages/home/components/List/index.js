@@ -12,7 +12,8 @@ class List extends Component{
         {
           list.map((item,index)=>{
             return (
-              <Link to="/detail" key={index}>
+              // <Link to={`/detail/${item.get("id")}`} key={index}>
+              <Link to={`/detail?id=${item.get("id")}`} key={index}>
                 <ListItem>
                   <ListContent>
                     <h3 className="title">{item.get("title")}</h3>

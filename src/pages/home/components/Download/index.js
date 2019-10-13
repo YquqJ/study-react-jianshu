@@ -2,7 +2,7 @@ import React,{ Component } from "react"
 // import { CSSTransition } from "react-transition-group"
 import { DownloadWrapper,DownloadInfo,DownloadPopup } from "../../style"
 
-const QRcode = "//cdn2.jianshu.io/assets/web/download-index-side-qrcode-cb13fc9106a478795f8d10f9f632fccf.png"
+const QRcode = "https://cdn2.jianshu.io/assets/web/download-index-side-qrcode-cb13fc9106a478795f8d10f9f632fccf.png"
 
 class Download extends Component{
   constructor(props){
