@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { CSSTransition } from "react-transition-group";
 import { actionCreators } from "./store";
+import { withRouter } from "react-router-dom"
 
 import {
   HeaderWrapper,
@@ -69,6 +70,9 @@ class Header extends Component {
       return null
     }
   }
+  goToLogin(){
+    this.props.history.push('/login');
+  }
   render() {
     const { focused,list, handleInputFocus } = this.props;
     return (
@@ -83,7 +87,7 @@ class Header extends Component {
             <i className="iconfont iconshoujixiazai"></i>
             下载App
           </NavItem>
-          <NavItem className="right" style={{ fontSize: "15px" }}>
+          <NavItem className="right" style={{ fontSize: "15px" }} onClick={()=>{this.goToLogin()}}>
             登录
           </NavItem>
           <NavItem className="right">
@@ -156,4 +160,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Header); //函数柯里化
+)(withRouter(Header)); //函数柯里化
