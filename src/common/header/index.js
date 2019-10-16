@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { CSSTransition } from "react-transition-group";
 import { actionCreators } from "./store";
-import { withRouter } from "react-router-dom"
+import { actionCreators as loginActions } from "../../pages/login/store"
+import { withRouter,Link } from "react-router-dom"
 
 import {
   HeaderWrapper,
@@ -70,11 +71,15 @@ class Header extends Component {
       return null
     }
   }
-  goToLogin(){
-    this.props.history.push('/login');
+  handleLogin(loginStatus){
+    if(loginStatus){
+      this.props.logout()
+    }else{
+      this.props.history.push('/login');
+    }
   }
   render() {
-    const { focused,list, handleInputFocus } = this.props;
+    const { focused,list, handleInputFocus, isLogin } = this.props;
     return (
       <HeaderWrapper>
         <Logo />
@@ -87,8 +92,8 @@ class Header extends Component {
             <i className="iconfont iconshoujixiazai"></i>
             下载App
           </NavItem>
-          <NavItem className="right" style={{ fontSize: "15px" }} onClick={()=>{this.goToLogin()}}>
-            登录
+          <NavItem className="right" style={{ fontSize: "15px" }} onClick={()=>{this.handleLogin(isLogin)}}>
+            {isLogin?'退出':'登录'}
           </NavItem>
           <NavItem className="right">
             <i className="iconfont iconAa" style={{ fontWeight: "bold" }}></i>
@@ -112,13 +117,15 @@ class Header extends Component {
           </SearchWrapper>
         </Nav>
         <Addition>
-          <Button className="write">
-            <i
-              className="iconfont iconiconset0137"
-              style={{ marginRight: "5px" }}
-            ></i>
-            写文章
-          </Button>
+          <Link to={isLogin?'/write':'/login'}>
+            <Button className="write">
+              <i
+                className="iconfont iconiconset0137"
+                style={{ marginRight: "5px" }}
+              ></i>
+              写文章
+            </Button>
+          </Link>
           <Button className="register">注册</Button>
         </Addition>
       </HeaderWrapper>
@@ -134,7 +141,8 @@ const mapStateToProps = state => {
     mouseIn: state.getIn(["header",'mouseIn']),
     list: state.getIn(['header','list']),
     page: state.getIn(['header','page']),
-    totalPage: state.getIn(['header','totalPage'])
+    totalPage: state.getIn(['header','totalPage']),
+    isLogin: state.getIn(['login','login'])
   };
 };
 //方法映射给props，进行派发改变state
@@ -153,6 +161,9 @@ const mapDispatchToProps = dispatch => {
       const originAngle = +spin.style.transform.replace(/[^0-9]/ig,'')
       spin.style.transform = `rotate(${originAngle+360}deg)`
       dispatch(actionCreators.changePage(page<totalPage?(page+1):1))
+    },
+    logout(){
+      dispatch(loginActions.logout())
     }
   };
 };
