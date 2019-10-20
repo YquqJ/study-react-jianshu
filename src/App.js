@@ -5,7 +5,7 @@ import store from "./store";
 import { GlobalStyle } from "./style";
 import Header from "./common/header";
 import Home from "./pages/home";
-import Detail from "./pages/detail";
+import Detail from "./pages/detail/loadable";
 import Login from "./pages/login";
 import Write from "./pages/write";
 
